@@ -1,5 +1,0 @@
-enum MaterialType{
-    MATERIAL_TYPE_SHINY,
-    MATERIAL_TYPE_SHADED,
-    MATERIAL_TYPE_FLAT
-}
