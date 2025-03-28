@@ -1,6 +1,6 @@
 <script>
 import { onMounted, ref } from "vue";
-import { createConfetti } from "./confetti";
+import { addConfettiToQueue } from "./confetti-handler";
 
 export default {
   setup() {
@@ -31,11 +31,37 @@ export default {
         },
       };
 
+      var conf2 = {
+        color: "#1d75e0",
+        quaternion: {
+          w: 1,
+          x: 0,
+          y: 0,
+          z: 0,
+        },
+        quaternion_velocity: {
+          w: 0,
+          x: 0,
+          y: 0.1,
+          z: 0.1,
+        },
+        material_type: "shaded",
+        position: {
+          x: 1300,
+          y: 500,
+        },
+        shapeOptions: {
+          type: "ellipse",
+          rx: "100",
+          ry: "50",
+        },
+      };
+
       const canvas = document.getElementById("playground");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      createConfetti(conf, canvas);
+      addConfettiToQueue([conf, conf2], canvas);
     });
   },
 };
