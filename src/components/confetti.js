@@ -1,6 +1,8 @@
 export function animateConfetti(conf, delta_time, ctx, light_dir) {
   ctx.resetTransform();
 
+  move(conf, delta_time);
+
   conf.quaternion = addQuaternionVelocity(conf.quaternion, conf.quaternion_velocity, delta_time);
   const matrix = createTranformationMatrix(conf.quaternion);
   ctx.transform(matrix[0][0], matrix[1][0], matrix[0][1], matrix[1][1], conf.position.x, conf.position.y);
@@ -22,6 +24,25 @@ export function animateConfetti(conf, delta_time, ctx, light_dir) {
   }
 
   fillShape(conf, ctx);
+}
+
+function move(conf, delta_time) {
+  if (conf.velocity.y < conf.velocity.maxFallspeed) {
+    conf.velocity.y += delta_time * conf.velocity.fallspeed;
+  } else {
+    conf.velocity.y -= conf.velocity.airdrag * delta_time;
+  }
+
+  const vx = Math.abs(conf.velocity.x) - conf.velocity.airdrag * delta_time;
+
+  if (vx < 0) {
+    conf.velocity.x = 0;
+  } else {
+    conf.velocity.x = Math.sign(conf.velocity.x) * vx;
+  }
+
+  conf.position.x += conf.velocity.x * delta_time;
+  conf.position.y += conf.velocity.y * delta_time;
 }
 
 function createTranformationMatrix(quaternion) {
