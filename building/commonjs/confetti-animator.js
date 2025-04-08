@@ -1,3 +1,4 @@
+import { ProgramUpdateLevel } from "typescript";
 import { animateConfetti } from "./confetti";
 
 export class ConfettiAnimator {
