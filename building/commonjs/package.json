@@ -1,6 +1,6 @@
 {
   "name": "confetti-launcher",
-  "version": "0.9.0",
+  "version": "0.9.2",
   "description": "A canvas confetti launcher that uses quaternions, lights and shadows to make highly customizable confettis",
   "keywords": [
     "canvas",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "author": "Mina Belinger",
   "type": "commonjs",
-  "main": "confetti-animator.js",
+  "main": "confetti-launcher.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

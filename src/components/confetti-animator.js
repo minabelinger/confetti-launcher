@@ -36,11 +36,7 @@ export class ConfettiAnimator {
     this.destroyDistance = this.config.destroyDistance;
 
     for (const conf of confList) {
-      const newConf = JSON.parse(JSON.stringify(conf));
-      if (newConf.shapeOptions.type == "image") {
-        newConf.offscreenCanvas = conf.offscreenCanvas;
-      }
-      this.queue.push(newConf);
+      this.queue.push(conf);
     }
   }
 
@@ -61,12 +57,13 @@ export class ConfettiAnimator {
 
     this.queue = this.queue.filter((conf) => {
       animateConfetti(conf, deltaTime, this.ctx, this.lightDir);
-      return (
-        (conf.position.y <= this.canvasHeight + this.destroyDistance &&
-          conf.lifetime.current < conf.lifetime.duration &&
-          conf.lifetime.enabled) ||
-        (conf.lifetime.current < conf.lifetime.duration && conf.lifetime.enabled)
-      );
+      if (conf.position.y > this.canvasHeight + this.destroyDistance) {
+        return false;
+      }
+      if (conf.lifetime.current > conf.lifetime.duration && conf.lifetime.enabled) {
+        return false;
+      }
+      return true;
     });
 
     if (this.queue.length) {

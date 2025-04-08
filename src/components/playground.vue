@@ -14,44 +14,23 @@ export default {
     };
 
     var conf = {
-      color: "#6beb34",
-      quaternion: {
-        w: 1,
-        x: 0,
-        y: 0,
-        z: 0,
-      },
-      quaternion_velocity: {
-        w: 0,
-        x: 5,
-        y: 0,
-        z: 0,
-      },
-      position: {
-        x: 1000,
-        y: 500,
-      },
       shapeOptions: {
         type: "image",
-        width: "40",
-        height: "40",
+        width: "30",
+        height: "30",
         image: {
           src: "src/assets/star-svgrepo-com.svg",
-          composition: "source-in",
+          composition: "source-atop",
         },
         shininess: 2,
-        shadows: 0.5,
+        shadows: 0.2,
       },
-      velocity: {
-        maxFallspeed: 500,
-        gravity: 250,
-        airdrag: 20,
-      },
+      randomRotation: true,
       randomColor: true,
       lifetime: {
         enabled: true,
-        onset: 1,
-        duration: 4,
+        onset: 0,
+        duration: 1,
         current: 0,
       },
     };
@@ -70,14 +49,7 @@ export default {
         x: x,
         y: y,
       },
-      direction: {
-        start: 0,
-        end: Math.PI * 2,
-      },
       confetti: [conf],
-      duration: 5,
-      delay: 0.5,
-      amount: [10, 10],
       strength: [100, 400],
       colors: ["#6beb34", "#4287f5", "#ca16de", "#41de16", "#de3116", "#f5d002"],
     };

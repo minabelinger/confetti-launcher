@@ -5,7 +5,7 @@ export function animateConfetti(conf, delta_time, ctx, light_dir) {
 
   move(conf, delta_time);
 
-  conf.quaternion = addQuaternionVelocity(conf.quaternion, conf.quaternion_velocity, delta_time);
+  conf.quaternion = addQuaternionVelocity(conf.quaternion, conf.quaternionVelocity, delta_time);
   const matrix = createTranformationMatrix(conf.quaternion);
   ctx.transform(matrix[0][0], matrix[1][0], matrix[0][1], matrix[1][1], conf.position.x, conf.position.y);
 
@@ -125,9 +125,11 @@ function fillShape(conf, ctx) {
   } else if (conf.shapeOptions.type == "image") {
     const offscreenCtx = conf.offscreenCanvas.getContext("2d");
 
-    offscreenCtx.fillStyle = ctx.fillStyle;
-    offscreenCtx.globalCompositeOperation = conf.shapeOptions.image.composition;
-    offscreenCtx.fillRect(0, 0, conf.shapeOptions.width, conf.shapeOptions.height);
+    if (conf.shapeOptions.image.composition !== "none") {
+      offscreenCtx.fillStyle = ctx.fillStyle;
+      offscreenCtx.globalCompositeOperation = conf.shapeOptions.image.composition;
+      offscreenCtx.fillRect(0, 0, conf.shapeOptions.width, conf.shapeOptions.height);
+    }
 
     ctx.drawImage(
       conf.offscreenCanvas,
