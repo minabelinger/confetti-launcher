@@ -23,12 +23,13 @@ export default {
           composition: "source-atop",
         },
         shininess: 2,
-        shadows: 0.2,
+        shadows: 0.1,
       },
+      shading: true,
       randomRotation: true,
       randomColor: true,
       lifetime: {
-        enabled: true,
+        enabled: false,
         onset: 0,
         duration: 1,
         current: 0,
@@ -49,12 +50,12 @@ export default {
         x: x,
         y: y,
       },
-      confetti: [conf],
+      amount: [100, 100],
       strength: [100, 400],
       colors: ["#6beb34", "#4287f5", "#ca16de", "#41de16", "#de3116", "#f5d002"],
     };
 
-    this.conf_launcher = new ConfettiLauncher(config, launcher, [conf], canvas);
+    this.conf_launcher = new ConfettiLauncher(launcher, [conf], canvas);
 
     window.addEventListener("resize", this.handleResize);
   },
@@ -66,7 +67,7 @@ export default {
       if (this.conf_launcher) {
         this.conf_launcher.shoot();
       } else {
-        console.warn("ConfettiLauncher not initialized. Make sure mounted() ran successfully.");
+        console.warn("ConfettiLauncher not initialized correctly.");
       }
     },
     handleResize() {

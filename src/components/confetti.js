@@ -9,24 +9,28 @@ export function animateConfetti(conf, delta_time, ctx, light_dir) {
   const matrix = createTranformationMatrix(conf.quaternion);
   ctx.transform(matrix[0][0], matrix[1][0], matrix[0][1], matrix[1][1], conf.position.x, conf.position.y);
 
-  const normal = calculateNormal(conf.quaternion);
-  const light_overlap = [normal[0] - light_dir[0], normal[1] - light_dir[1], normal[2] - light_dir[2]];
-  const light_level =
-    2 -
-    Math.sqrt(
-      light_overlap[0] * light_overlap[0] + light_overlap[1] * light_overlap[1] + light_overlap[2] * light_overlap[2]
-    );
+  if (conf.shading) {
+    const normal = calculateNormal(conf.quaternion);
+    const light_overlap = [normal[0] - light_dir[0], normal[1] - light_dir[1], normal[2] - light_dir[2]];
+    const light_level =
+      2 -
+      Math.sqrt(
+        light_overlap[0] * light_overlap[0] + light_overlap[1] * light_overlap[1] + light_overlap[2] * light_overlap[2]
+      );
+
+    if (light_level >= 1) {
+      const color = blendWithLight(conf.color, Math.abs(light_level - 1) * conf.shapeOptions.shininess, false);
+      ctx.fillStyle = color;
+    } else if (light_level < 1) {
+      const color = blendWithLight(conf.color, (1 - light_level) * conf.shapeOptions.shadows, true);
+      ctx.fillStyle = color;
+    }
+  } else {
+    ctx.fillStyle = conf.color;
+  }
 
   if (conf.lifetime.enabled) {
     alphadecay(conf, ctx);
-  }
-
-  if (light_level >= 1) {
-    const color = blendWithLight(conf.color, Math.abs(light_level - 1) * conf.shapeOptions.shininess, false);
-    ctx.fillStyle = color;
-  } else if (light_level < 1) {
-    const color = blendWithLight(conf.color, (1 - light_level) * conf.shapeOptions.shadows, true);
-    ctx.fillStyle = color;
   }
 
   fillShape(conf, ctx);
@@ -123,7 +127,8 @@ function fillShape(conf, ctx) {
     ctx.ellipse(0, 0, conf.shapeOptions.width, conf.shapeOptions.height, 0, 0, 2 * Math.PI);
     ctx.fill();
   } else if (conf.shapeOptions.type == "image") {
-    const offscreenCtx = conf.offscreenCanvas.getContext("2d");
+    const offscreenCtx = conf.offscreenCanvas.getContext("2d", { willReadFrequently: true });
+    const imageData = offscreenCtx.getImageData(0, 0, conf.shapeOptions.width, conf.shapeOptions.height);
 
     if (conf.shapeOptions.image.composition !== "none") {
       offscreenCtx.fillStyle = ctx.fillStyle;
@@ -138,6 +143,7 @@ function fillShape(conf, ctx) {
       conf.shapeOptions.width,
       conf.shapeOptions.height
     );
+    offscreenCtx.putImageData(imageData, 0, 0);
   } else if (conf.shapeOptions.type == "rectangle") {
     ctx.fillRect(
       -conf.shapeOptions.width / 2,

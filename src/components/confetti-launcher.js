@@ -1,8 +1,7 @@
 import { ConfettiAnimator } from "./confetti-animator.js";
 
 export class ConfettiLauncher {
-  constructor(config, launcher, confList, canvas) {
-    this.config = config;
+  constructor(launcher, confList, canvas) {
     this.launcher = launcher;
     this.confList = [];
     this.canvas = canvas;
@@ -46,6 +45,8 @@ export class ConfettiLauncher {
       amount: [10, 10],
       strength: [100, 100],
       colors: [],
+      destroyDistance: 300,
+      light_dir: [-1, -1, -0.5],
     };
 
     this.launcher = Object.assign(defaultLauncher, this.launcher);
@@ -59,6 +60,7 @@ export class ConfettiLauncher {
       quaternionVelocity: { w: 0, x: 3, y: 3, z: 0 },
       color: "#3b96ff",
       randomColor: false,
+      shading: false,
       shapeOptions: {
         type: "ellipse",
         width: 10,
@@ -114,7 +116,10 @@ export class ConfettiLauncher {
 
   shoot() {
     if (!this.animator) {
-      this.animator = new ConfettiAnimator(this.config, this.canvas);
+      this.animator = new ConfettiAnimator(
+        { light_dir: this.launcher.light_dir, destroyDistance: this.launcher.destroyDistance },
+        this.canvas
+      );
     }
     const amount = Math.random() * (this.launcher.amount[1] - this.launcher.amount[0]) + this.launcher.amount[0];
     const confettis = [];
@@ -132,7 +137,7 @@ export class ConfettiLauncher {
       this.time += this.launcher.delay;
       setTimeout(() => {
         this.shoot();
-      }, this.launcher.delay * 1000);
+      }, this.launcher.delay);
     } else {
       this.time = 0;
     }

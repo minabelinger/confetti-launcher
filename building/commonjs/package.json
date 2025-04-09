@@ -1,10 +1,10 @@
 {
   "name": "confetti-launcher",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "description": "A canvas confetti launcher that uses quaternions, lights and shadows to make highly customizable confettis",
   "keywords": [
-    "canvas",
-    "confetti"
+    "Canvas",
+    "Confetti"
   ],
   "homepage": "https://github.com/minabelinger/confetti-launcher#readme",
   "bugs": {
