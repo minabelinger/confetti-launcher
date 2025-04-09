@@ -91,7 +91,7 @@ export default {
   <button @click="shoot">Shoot</button>
   <img
     id="image"
-    src="../assets/a11.png"
+    src="../assets/star-svgrepo-com.svg"
   />
   <canvas id="playground"></canvas>
 </template>
