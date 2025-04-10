@@ -13,9 +13,11 @@ A simple and customizable confetti launcher using JavaScript and Canvas.
 ## Installation
 
 1.  **Install via NPM:**
+
     ```bash
     npm install confetti-launcher
     ```
+
 2.  **Simply import the package first:**
 
     ```js

@@ -1,0 +1,8 @@
+index.html
+src/main.js
+src/App.vue
+src/components/playground.vue
+src/assets/*
+vite.config.js
+.vscode/*
+jsconfig.json

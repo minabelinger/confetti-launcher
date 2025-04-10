@@ -15,9 +15,9 @@ export default {
 
     var conf = {
       shapeOptions: {
-        type: "image",
+        type: "rectangle",
         width: "30",
-        height: "30",
+        height: "10",
         image: {
           src: "src/assets/star-svgrepo-com.svg",
           composition: "source-atop",
@@ -25,13 +25,14 @@ export default {
         shininess: 2,
         shadows: 0.1,
       },
+      velocity: { x: 0, y: 0, maxFallspeed: 0, gravity: 0, airdrag: 20 },
       shading: true,
       randomRotation: true,
-      randomColor: true,
+      randomColor: false,
       lifetime: {
-        enabled: false,
-        onset: 0,
-        duration: 1,
+        enabled: true,
+        onset: 2,
+        duration: 5,
         current: 0,
       },
     };
