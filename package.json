@@ -1,6 +1,6 @@
 {
   "name": "confetti-launcher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A canvas confetti launcher that uses quaternions, lights and shadows to make highly customizable confettis",
   "keywords": [
     "Canvas",
