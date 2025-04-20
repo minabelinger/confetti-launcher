@@ -63,7 +63,7 @@ A simple and customizable confetti launcher using JavaScript and Canvas.
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const conf_launcher = new ConfettiLauncher(config, launcher, [conf], canvas);
+    const conf_launcher = new ConfettiLauncher(launcher, [conf], canvas);
     ```
 
 6.  **When everything works fine, it's time to shoot the launcher!**
@@ -128,7 +128,6 @@ Remember that multiply confetti's can be configurated and saved into a launcher
 | ----------------- | -------------- | -------------------------------------------------------------------------------------------------------------- |
 | `position`        | `{x, y}`       | The Position of the launcher.                                                                                  |
 | `direction`       | `{start, end}` | Angle range (in radians) to launch confetti.                                                                   |
-| `confetti`        | `array`        | A list of confettis to shoot                                                                                   |
 | `duration`        | `number`       | Total time (ms) the launcher will emit confetti.                                                               |
 | `delay`           | `number`       | Delay (ms) before the launcher starts.                                                                         |
 | `amount`          | `[min, max]`   | Range of how many confetti pieces are emitted per burst.                                                       |

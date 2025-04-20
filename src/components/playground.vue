@@ -8,11 +8,6 @@ export default {
     };
   },
   mounted() {
-    const config = {
-      destroyDistance: 300,
-      light_dir: [-1, -1, -0.5],
-    };
-
     var conf = {
       shapeOptions: {
         type: "rectangle",
@@ -53,6 +48,7 @@ export default {
       },
       amount: [100, 100],
       strength: [100, 400],
+      confetti: [conf],
       colors: ["#6beb34", "#4287f5", "#ca16de", "#41de16", "#de3116", "#f5d002"],
     };
 

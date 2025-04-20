@@ -39,7 +39,6 @@ export class ConfettiLauncher {
         start: 0,
         end: Math.PI * 2,
       },
-      confetti: [],
       duration: 0,
       delay: 0,
       amount: [10, 10],
