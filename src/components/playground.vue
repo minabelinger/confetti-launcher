@@ -20,10 +20,10 @@ export default {
         shininess: 2,
         shadows: 0.1,
       },
-      velocity: { x: 0, y: 0, maxFallspeed: 0, gravity: 0, airdrag: 20 },
+      velocity: { x: 0, y: 0, maxFallspeed: 300, gravity: 250, airdrag: 20 },
       shading: true,
       randomRotation: true,
-      randomColor: false,
+      randomColor: true,
       lifetime: {
         enabled: true,
         onset: 2,
@@ -46,10 +46,14 @@ export default {
         x: x,
         y: y,
       },
-      amount: [100, 100],
+      amount: [20, 20],
       strength: [100, 400],
       confetti: [conf],
       colors: ["#6beb34", "#4287f5", "#ca16de", "#41de16", "#de3116", "#f5d002"],
+      shootRepetition: {
+        delay: 100,
+        duration: 1000,
+      },
     };
 
     this.conf_launcher = new ConfettiLauncher(launcher, [conf], canvas);

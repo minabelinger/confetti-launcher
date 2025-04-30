@@ -1,6 +1,6 @@
 {
   "name": "confetti-launcher",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A canvas confetti launcher that uses quaternions, lights and shadows to make highly customizable confettis",
   "keywords": [
     "Canvas",
@@ -23,9 +23,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "confetti-launcher": "^1.0.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@tsconfig/node20": "^20.1.5",
     "@types/node": "^22.13.13",

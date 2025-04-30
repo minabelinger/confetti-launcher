@@ -39,8 +39,10 @@ export class ConfettiLauncher {
         start: 0,
         end: Math.PI * 2,
       },
-      duration: 0,
-      delay: 0,
+      shootRepetition: {
+        duration: 0,
+        delay: 0,
+      },
       amount: [10, 10],
       strength: [100, 100],
       colors: [],
@@ -132,11 +134,11 @@ export class ConfettiLauncher {
       this.animator.startAnimation();
     }
 
-    if (this.launcher.delay && this.time <= this.launcher.duration) {
-      this.time += this.launcher.delay;
+    if (this.launcher.shootRepetition.delay && this.time <= this.launcher.shootRepetition.duration) {
+      this.time += this.launcher.shootRepetition.delay;
       setTimeout(() => {
         this.shoot();
-      }, this.launcher.delay);
+      }, this.launcher.shootRepetition.delay);
     } else {
       this.time = 0;
     }
