@@ -37,7 +37,7 @@ export class ConfettiLauncher {
       },
       direction: {
         start: 0,
-        end: Math.PI * 2,
+        end: 2,
       },
       shootRepetition: {
         duration: 0,
