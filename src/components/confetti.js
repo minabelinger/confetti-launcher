@@ -31,6 +31,8 @@ export function animateConfetti(conf, delta_time, ctx, light_dir) {
 
   if (conf.lifetime.enabled) {
     alphadecay(conf, ctx);
+  } else {
+    ctx.globalAlpha = conf.alpha;
   }
 
   fillShape(conf, ctx);
@@ -57,11 +59,12 @@ function move(conf, delta_time) {
 
 function alphadecay(conf, ctx) {
   if (conf.lifetime.current > conf.lifetime.onset && conf.lifetime.current < conf.lifetime.duration) {
-    ctx.globalAlpha = (conf.lifetime.duration - conf.lifetime.current) / (conf.lifetime.duration - conf.lifetime.onset);
+    ctx.globalAlpha =
+      ((conf.lifetime.duration - conf.lifetime.current) / (conf.lifetime.duration - conf.lifetime.onset)) * conf.alpha;
   } else if (conf.lifetime.current >= conf.lifetime.duration) {
     ctx.globalAlpha = 0;
   } else {
-    ctx.globalAlpha = 1;
+    ctx.globalAlpha = conf.alpha;
   }
 }
 
@@ -124,7 +127,7 @@ function blendWithLight(hex, amount, reverse) {
 function fillShape(conf, ctx) {
   if (conf.shapeOptions.type == "ellipse") {
     ctx.beginPath();
-    ctx.ellipse(0, 0, conf.shapeOptions.width, conf.shapeOptions.height, 0, 0, 2 * Math.PI);
+    ctx.ellipse(0, 0, conf.shapeOptions.width / 2, conf.shapeOptions.height / 2, 0, 0, 2 * Math.PI);
     ctx.fill();
   } else if (conf.shapeOptions.type == "image") {
     const offscreenCtx = conf.offscreenCanvas.getContext("2d", { willReadFrequently: true });

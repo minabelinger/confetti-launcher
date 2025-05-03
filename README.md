@@ -124,17 +124,16 @@ Remember that multiply confetti's can be configurated and saved into a launcher
 
 ---
 
-| Property          | Type           | Description                                                                                                    |
-| ----------------- | -------------- | -------------------------------------------------------------------------------------------------------------- |
-| `position`        | `{x, y}`       | The Position of the launcher.                                                                                  |
-| `direction`       | `{start, end}` | Angle range (in radians) to launch confetti.                                                                   |
-| `duration`        | `number`       | Total time (ms) the launcher will emit confetti.                                                               |
-| `delay`           | `number`       | Delay (ms) before the launcher starts.                                                                         |
-| `amount`          | `[min, max]`   | Range of how many confetti pieces are emitted per burst.                                                       |
-| `strength`        | `[min, max]`   | Range of launch velocity for confetti.                                                                         |
-| `colors`          | `array`        | Optional color palette for confetti (`hex` strings) when random colors is enabled for that according confetti. |
-| `destroyDistance` | `number`       | Distance after which confetti is removed from the scene.                                                       |
-| `light_dir`       | `[x, y, z]`    | Direction vector of the light source (for shading/lighting effects).                                           |
+| Property          | Type                | Description                                                                                                    |
+| ----------------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `position`        | `{x, y}`            | The Position of the launcher.                                                                                  |
+| `direction`       | `{start, end}`      | Angle range (in radians) to launch confetti.                                                                   |
+| `shootRepetition` | `{duration, delay}` | Total time (ms) the launcher will emit confetti.                                                               |
+| `amount`          | `[min, max]`        | Range of how many confetti pieces are emitted per burst.                                                       |
+| `strength`        | `[min, max]`        | Range of launch velocity for confetti.                                                                         |
+| `colors`          | `array`             | Optional color palette for confetti (`hex` strings) when random colors is enabled for that according confetti. |
+| `destroyDistance` | `number`            | Distance after which confetti is removed from the scene.                                                       |
+| `light_dir`       | `[x, y, z]`         | Direction vector of the light source (for shading/lighting effects).                                           |
 
 ## Contributing
 

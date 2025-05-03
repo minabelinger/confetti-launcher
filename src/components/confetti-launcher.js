@@ -82,6 +82,7 @@ export class ConfettiLauncher {
         gravity: 250,
         airdrag: 20,
       },
+      alpha: 1,
       randomRotation: false,
     };
 
@@ -154,7 +155,8 @@ export class ConfettiLauncher {
     newConf.position = { ...this.launcher.position };
 
     const dir =
-      Math.random() * (this.launcher.direction.end - this.launcher.direction.start) + this.launcher.direction.start;
+      Math.random() * (this.launcher.direction.end * Math.PI - this.launcher.direction.start * Math.PI) +
+      this.launcher.direction.start * Math.PI;
     const strenght =
       Math.random() * (this.launcher.strength[1] - this.launcher.strength[0]) + this.launcher.strength[0];
     const velocity = [-Math.cos(dir) * strenght, -Math.sin(dir) * strenght];
