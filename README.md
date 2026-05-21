@@ -116,7 +116,7 @@ A simple and customizable confetti launcher using JavaScript and Canvas.
 | `duration` | `number`  | How long the confetti exists.     |
 | `current`  | `number`  | Current lifetime counter.         |
 
-Remember that multiply confetti's can be configurated and saved into a launcher
+Remember that multiple confetti's can be configurated and saved into a launcher
 
 ---
 
